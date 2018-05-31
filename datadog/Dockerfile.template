@@ -18,7 +18,7 @@ COPY fix_32bit.patch /usr/app/src/github.com/DataDog/datadog-agent/
 RUN export PATH=$PATH:$GOPATH/bin && \
   cd /usr/app/src/github.com/DataDog/datadog-agent && \
   invoke deps && \
-  invoke agent.build --build-exclude=snmp && \
+  invoke agent.build -p && \
   ln -s /usr/app/src/github.com/DataDog/datadog-agent/bin/agent/dist/ /etc/datadog-agent
 
 COPY docker.yaml bin/agent/dist/conf.d/docker.d/conf.yaml
